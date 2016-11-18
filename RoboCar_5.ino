@@ -230,15 +230,7 @@ void setup()
 #endif
   radio.encrypt(ENCRYPTKEY);
   
-  //radio.setFrequency(919000000); //set frequency to some custom frequency
-  char buff[50];
   
-
-  sprintf(buff, "\nListening at %d Mhz...", FREQUENCY==RF69_433MHZ ? 433 : FREQUENCY==RF69_868MHZ ? 868 : 915);
-  #ifdef ENABLE_ATC
-  Serial.println("RFM69_ATC Enabled (Auto Transmission Control)");
-  #endif
-  /*******************/
   
   
   /******** servo setup ************/
