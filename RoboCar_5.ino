@@ -76,8 +76,8 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(6, PIN, NEO_GRB + NEO_KHZ800);
 //int motor1 = 10; //PB2
 //int motor2 = 5; //PD5
 
-int motor3 = 6; //PD6
-int motor4 = 9; //PB1
+byte motor3 = 6; //PD6
+byte motor4 = 9; //PB1
 
 int posRotation=32;
 int posArm=20;
@@ -88,8 +88,8 @@ int servoSensitivity=1;
 
 //int motor1Dir = 16; //PC2
 //int motor2Dir = 3; //PD3
-int motor3Dir = 4; //PD4
-int motor4Dir = 7; //PD7
+byte motor3Dir = 4; //PD4
+byte motor4Dir = 7; //PD7
 
 byte debugMode1=0;
 byte canGoForward=1;
@@ -224,7 +224,7 @@ void setup()
   Serial.begin(SERIAL_BAUD);
   delay(10);
   radio.initialize(FREQUENCY,NODEID,NETWORKID);
-  radio.readAllRegs();
+  //radio.readAllRegs();
 #ifdef IS_RFM69HW
   radio.setHighPower(); //only for RFM69HW!
 #endif
@@ -714,7 +714,9 @@ void loop() {
             updateRadioSpeedDir(x1,y1);
           
     } else {
-      Serial.println("Frame header incorrect");
+		if (debugMode1 == 1) {
+			Serial.println("Frame header incorrect");
+		}
     }
     
 	
